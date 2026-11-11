@@ -1,25 +1,26 @@
-﻿Console.Write("Digite um número inteiro: ");
-int limite = int.Parse(Console.ReadLine());
-
-Console.WriteLine($"Primos até {limite}:");
-
-for (int candidato = 2; candidato <= limite; candidato++)
+﻿bool Primo(int numero)
 {
-    bool primo = true;
+    if (numero <= 1)
+        return false;
 
-    for (int divisor = 2; divisor < candidato; divisor++)
+    for (int i = 2; i < numero; i++)
     {
-        if (candidato % divisor == 0)
-        {
-            primo = false;
-            break;
-        }
+        if (numero % i == 0)
+            return false;
     }
+    return true;
+}
 
-    if (primo)
+void escrevePrimos(int numero)
+{
+    for (int i = 2; i <= numero; i++)
     {
-        Console.Write(candidato + " ");
+        if (Primo(i))
+            Console.Write(i + " ");
     }
 }
 
-Console.WriteLine();
+Console.Write("digite um número:");
+int entrada = int.Parse(Console.ReadLine());
+
+escrevePrimos(entrada);
